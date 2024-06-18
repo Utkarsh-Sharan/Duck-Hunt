@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Duck-Hunt\Duck-Hunt\sfml\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Duck-Hunt\Duck-Hunt\Header;D:\Duck-Hunt\Duck-Hunt\sfml\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,7 +130,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Event\EventService.cpp" />
+    <ClCompile Include="Source\Global\ServiceLocator.cpp" />
+    <ClCompile Include="Source\Graphic\GraphicService.cpp" />
+    <ClCompile Include="Source\Main\GameService.cpp" />
     <ClCompile Include="Source\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header\Event\EventService.h" />
+    <ClInclude Include="Header\Global\ServiceLocator.h" />
+    <ClInclude Include="Header\Graphic\GraphicService.h" />
+    <ClInclude Include="Header\Main\GameService.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
