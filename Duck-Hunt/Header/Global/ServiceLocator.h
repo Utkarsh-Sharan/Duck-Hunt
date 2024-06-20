@@ -3,6 +3,7 @@
 #include "Graphic/GraphicService.h"
 #include "Event/EventService.h"
 #include "Time/TimeService.h"
+#include "Enemy/EnemyService.h"
 
 namespace Global
 {
@@ -12,6 +13,7 @@ namespace Global
 		Graphic::GraphicService* graphic_service;
 		Event::EventService* event_service;
 		Time::TimeService* time_service;
+		Enemy::EnemyService* enemy_service;
 
 		ServiceLocator();
 		~ServiceLocator();
@@ -31,5 +33,6 @@ namespace Global
 		Graphic::GraphicService* getGraphicService();
 		Event::EventService* getEventService();
 		Time::TimeService* getTimeService();
+		Enemy::EnemyService* getEnemyService();
 	};
 }
