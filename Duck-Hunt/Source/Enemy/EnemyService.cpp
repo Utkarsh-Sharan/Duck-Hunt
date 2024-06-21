@@ -4,9 +4,12 @@
 
 #include "Enemy/Controllers/BlackDuckController.h"
 
+#include "Global/ServiceLocator.h"
+
 namespace Enemy
 {
 	using namespace Controller;
+	using namespace Global;
 
 	EnemyService::EnemyService()
 	{
@@ -23,14 +26,19 @@ namespace Enemy
 		wave_number = 1;
 	}
 
-	void EnemyService::updateWaveTimer()
-	{
-
-	}
-
 	void EnemyService::update()
 	{
-		processEnemySpawn();
+		updateWavePauseTimer();
+
+		if (wave_pause_timer >= wave_pause)
+		{
+			for (int i = 0; i < wave_number + 1; i++)
+			{
+				processEnemySpawn();
+			}
+
+			wave_pause_timer = 0.0f;
+		}
 
 		for (int i = 0; i < enemy_list.size(); i++)
 		{
@@ -38,9 +46,23 @@ namespace Enemy
 		}
 	}
 
+	void EnemyService::updateWavePauseTimer()
+	{
+		wave_pause_timer += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+	}
+
+	void EnemyService::updateWaveTimer()
+	{
+		wave_timer += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+	}
+
 	void EnemyService::processEnemySpawn()
 	{
-		spawnEnemy();
+		if (wave_timer <= wave_time)
+		{
+			spawnEnemy();
+			wave_timer = 0;
+		}
 	}
 
 	EnemyController* EnemyService::spawnEnemy()
@@ -96,5 +118,8 @@ namespace Enemy
 	void EnemyService::reset()
 	{
 		destroy();
+
+		wave_timer = 0;
+		wave_number = 1;
 	}
 }

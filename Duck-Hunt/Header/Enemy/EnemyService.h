@@ -11,9 +11,11 @@ namespace Enemy
 	class EnemyService
 	{
 	private:
-		const float wave_interval = 10.0f;
+		const float wave_time = 10.0f;
 		const float wave_pause = 4.0f;
+
 		float wave_timer;
+		float wave_pause_timer;
 		float wave_number;
 
 		std::vector<EnemyController*> enemy_list;
@@ -23,6 +25,7 @@ namespace Enemy
 		EnemyController* createEnemy(EnemyType enemy_type);
 
 		void updateWaveTimer();
+		void updateWavePauseTimer();
 		void processEnemySpawn();
 
 		void destroyFlaggedEnemies();
