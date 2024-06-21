@@ -40,7 +40,7 @@ namespace Main
 
 		bool isRunning();
 
-		static void setGameState(GameState state);
-		static GameState getGameState();
+		//static void setGameState(GameState state);
+		//static GameState getGameState();
 	};
 }
