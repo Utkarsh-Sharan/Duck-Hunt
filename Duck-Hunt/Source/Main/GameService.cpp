@@ -27,7 +27,7 @@ namespace Main
 	{
 		service_locator->getInstance()->initialize();
 		initializeVariables();
-		showMainMenu();
+		showSplashScreen();
 	}
 
 	void GameService::initializeVariables()
@@ -35,9 +35,9 @@ namespace Main
 		game_window = service_locator->getInstance()->getGraphicService()->getGameWindow();
 	}
 
-	void GameService::showMainMenu()
+	void GameService::showSplashScreen()
 	{
-		setGameState(GameState::MAIN_MENU);
+		setGameState(GameState::SPLASH_SCREEN);
 	}
 
 	void GameService::update()

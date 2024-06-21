@@ -1,4 +1,5 @@
 #include "Enemy/EnemyView.h"
+#include "Enemy/EnemyController.h"
 
 namespace Enemy
 {
