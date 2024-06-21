@@ -4,9 +4,13 @@
 
 #include "Enemy/Controllers/BlackDuckController.h"
 
+#include "Global/ServiceLocator.h"
+
 namespace Enemy
 {
 	using namespace Controller;
+	using namespace Global;
+	using namespace Gameplay;
 
 	EnemyService::EnemyService()
 	{
@@ -20,27 +24,61 @@ namespace Enemy
 
 	void EnemyService::initialize()
 	{
+		gameplay_service = ServiceLocator::getInstance()->getGameplayService();
+		gameplay_service->setGameState(GameState::SPLASH_SCREEN);
 		wave_number = 1;
-	}
-
-	void EnemyService::updateWaveTimer()
-	{
-
 	}
 
 	void EnemyService::update()
 	{
-		processEnemySpawn();
+		switch (gameplay_service->getGameState())
+		{
+		case GameState::SPLASH_SCREEN:
+			updateWavePauseTimer();
+			break;
 
+		case GameState::GAMEPLAY:
+			updateWaveTimer();
+			break;
+		}
+		
 		for (int i = 0; i < enemy_list.size(); i++)
 		{
 			enemy_list[i]->update();
 		}
 	}
 
+	void EnemyService::updateWavePauseTimer()
+	{
+		wave_pause_timer += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+		if (wave_pause_timer >= wave_pause)
+		{
+			gameplay_service->setGameState(GameState::GAMEPLAY);
+			wave_pause_timer = 0.0f;
+		}
+	}
+
+	void EnemyService::updateWaveTimer()
+	{
+		wave_timer += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+		if (wave_timer >= wave_time)
+		{
+			gameplay_service->setGameState(GameState::SPLASH_SCREEN);
+			wave_timer = 0.0f;
+			wave_number++;
+		}
+
+		processEnemySpawn();
+	}
+
 	void EnemyService::processEnemySpawn()
 	{
-		spawnEnemy();
+		if (number_of_enemies != wave_number + 1)
+		{
+			spawnEnemy();
+			number_of_enemies++;
+		}
 	}
 
 	EnemyController* EnemyService::spawnEnemy()
@@ -96,5 +134,8 @@ namespace Enemy
 	void EnemyService::reset()
 	{
 		destroy();
+
+		wave_timer = 0;
+		wave_number = 1;
 	}
 }
