@@ -20,7 +20,6 @@ namespace Main
 		//static GameState current_state;
 
 		Global::ServiceLocator* service_locator;
-		Gameplay::GameplayService* gameplay_service;
 
 		sf::RenderWindow* game_window;
 

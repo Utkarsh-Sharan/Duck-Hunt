@@ -5,6 +5,7 @@ namespace Global
 	using namespace Graphic;
 	using namespace Event;
 	using namespace Time;
+	using namespace Gameplay;
 	using namespace Enemy;
 
 	ServiceLocator::ServiceLocator()
@@ -12,6 +13,7 @@ namespace Global
 		graphic_service = nullptr;
 		event_service = nullptr;
 		time_service = nullptr;
+		gameplay_service = nullptr;
 		enemy_service = nullptr;
 
 		createServices();
@@ -27,6 +29,7 @@ namespace Global
 		graphic_service = new GraphicService();
 		event_service = new EventService();
 		time_service = new TimeService();
+		gameplay_service = new Gameplay::GameplayService();
 		enemy_service = new EnemyService();
 	}
 
@@ -41,6 +44,7 @@ namespace Global
 		graphic_service->initialize();
 		event_service->initialize();
 		time_service->initialize();
+		gameplay_service->initialize();
 		enemy_service->initialize();
 	}
 
@@ -49,12 +53,14 @@ namespace Global
 		graphic_service->update();
 		event_service->update();
 		time_service->update();
+		gameplay_service->update();
 		enemy_service->update();
 	}
 
 	void ServiceLocator::render()
 	{
 		graphic_service->render();
+		gameplay_service->render();
 		enemy_service->render();
 	}
 
@@ -63,11 +69,13 @@ namespace Global
 		delete(graphic_service);
 		delete(event_service);
 		delete(time_service);
+		delete(gameplay_service);
 		delete(enemy_service);
 
 		graphic_service = nullptr;
 		event_service = nullptr;
 		time_service = nullptr;
+		gameplay_service = nullptr;
 		enemy_service = nullptr;
 	}
 
@@ -76,22 +84,27 @@ namespace Global
 		delete(this);
 	}
 
-	Graphic::GraphicService* ServiceLocator::getGraphicService()
+	GraphicService* ServiceLocator::getGraphicService()
 	{
 		return graphic_service;
 	}
 
-	Event::EventService* ServiceLocator::getEventService()
+	EventService* ServiceLocator::getEventService()
 	{
 		return event_service;
 	}
 
-	Time::TimeService* ServiceLocator::getTimeService()
+	TimeService* ServiceLocator::getTimeService()
 	{
 		return time_service;
 	}
 
-	Enemy::EnemyService* ServiceLocator::getEnemyService()
+	Gameplay::GameplayService* ServiceLocator::getGameplayService()
+	{
+		return gameplay_service;
+	}
+
+	EnemyService* ServiceLocator::getEnemyService()
 	{
 		return enemy_service;
 	}

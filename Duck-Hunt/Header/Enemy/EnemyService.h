@@ -8,6 +8,8 @@ namespace Enemy
 	class EnemyController;
 	enum class EnemyType;
 
+	class Gameplay::GameplayService;
+
 	class EnemyService
 	{
 	private:
@@ -17,6 +19,9 @@ namespace Enemy
 		float wave_timer;
 		float wave_pause_timer;
 		float wave_number;
+		float number_of_enemies;
+
+		Gameplay::GameplayService* gameplay_service;
 
 		std::vector<EnemyController*> enemy_list;
 		std::vector<EnemyController*> flagged_enemy_list;
