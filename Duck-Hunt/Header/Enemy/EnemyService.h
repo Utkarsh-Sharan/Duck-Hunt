@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Gameplay/GameplayService.h"
+
 #include <SFML/Graphics.hpp>
 #include <vector>
 
@@ -7,8 +9,6 @@ namespace Enemy
 {
 	class EnemyController;
 	enum class EnemyType;
-
-	class Gameplay::GameplayService;
 
 	class EnemyService
 	{
