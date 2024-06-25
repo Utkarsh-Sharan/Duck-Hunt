@@ -53,8 +53,8 @@ namespace Enemy
 		wave_pause_timer += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 		if (wave_pause_timer >= wave_pause)
 		{
-			gameplay_service->setGameState(GameState::GAMEPLAY);
 			wave_pause_timer = 0.0f;
+			gameplay_service->setGameState(GameState::GAMEPLAY);
 		}
 	}
 
@@ -64,8 +64,8 @@ namespace Enemy
 
 		if (wave_timer >= wave_time)
 		{
-			gameplay_service->setGameState(GameState::SPLASH_SCREEN);
 			wave_timer = 0.0f;
+			gameplay_service->setGameState(GameState::SPLASH_SCREEN);
 			wave_number++;
 		}
 

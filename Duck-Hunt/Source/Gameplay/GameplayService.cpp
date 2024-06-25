@@ -2,6 +2,8 @@
 
 namespace Gameplay
 {
+	GameState GameplayService::current_state = GameState::BOOT;
+
 	GameplayService::GameplayService()
 	{
 
@@ -14,7 +16,7 @@ namespace Gameplay
 
 	void GameplayService::initialize()
 	{
-		current_state = GameState::BOOT;
+		
 	}
 
 	void GameplayService::update()
