@@ -1,12 +1,32 @@
 #include "UI/UIElements/ImageView.h"
+#include "Global/ServiceLocator.h"
 
 namespace UI
 {
 	namespace UIElement
 	{
+		using namespace Global;
+
 		ImageView::ImageView() = default;
 
 		ImageView::~ImageView() = default;
+
+		void ImageView::initialize(sf::String texture_path, float image_width, float image_height, sf::Vector2f position)
+		{
+			UIView::initialize();
+
+			if (setTexture(texture_path))
+			{
+				setScale(image_width, image_height);
+
+				setPosition(position);
+			}
+			//setTexture(texture_path);
+			
+			//setScale(image_width, image_height);
+			
+			//setPosition(position);
+		}
 
 		void ImageView::initialize(sf::String texture_path, float image_width, float image_height, float tile_width, float tile_height, sf::Vector2f position)
 		{
@@ -14,17 +34,19 @@ namespace UI
 
 			setTexture(texture_path);
 			setTextureRect(sf::IntRect(0, 0, tile_width, tile_height));
-			//setScale(image_width, image_height);
+			setScale(image_width, image_height);
 			setScale(image_width, image_height, tile_width, tile_height);
 			setPosition(position);
 		}
 
-		void ImageView::setTexture(sf::String texture_path)
+		bool ImageView::setTexture(sf::String texture_path)
 		{
 			if (image_texture.loadFromFile(texture_path))
 			{
 				image_sprite.setTexture(image_texture);
+				return true;
 			}
+			return false;
 		}
 
 		void ImageView::setTextureRect(sf::IntRect texture_rect)
@@ -32,13 +54,14 @@ namespace UI
 			image_sprite.setTextureRect(texture_rect);
 		}
 
-		/*void ImageView::setScale(float width, float height)
+		void ImageView::setScale(float width, float height)
 		{
 			float scale_x = width / image_sprite.getTexture()->getSize().x;
 			float scale_y = height / image_sprite.getTexture()->getSize().y;
 
+			//printf("x: %d, y: %d\n", image_sprite.getTexture()->getSize().x, image_sprite.getTexture()->getSize().y);
 			image_sprite.setScale(scale_x, scale_y);
-		}*/
+		}
 
 		void ImageView::setScale(float width, float height, float tile_width, float tile_height)
 		{
@@ -64,6 +87,7 @@ namespace UI
 
 			if (ui_state == UIState::VISIBLE)
 			{
+				//if(image_sprite == ServiceLocator::getInstance()->getEnemyService()
 				game_window->draw(image_sprite);
 			}
 		}

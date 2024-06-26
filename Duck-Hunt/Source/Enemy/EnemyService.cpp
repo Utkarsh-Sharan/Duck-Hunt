@@ -48,7 +48,6 @@ namespace Enemy
 
 	EnemyController* EnemyService::spawnEnemy()
 	{
-		printf("HI");
 		EnemyController* enemy_controller = createEnemy(getRandomEnemyType());
 		enemy_controller->initialize();
 
@@ -100,8 +99,5 @@ namespace Enemy
 	void EnemyService::reset()
 	{
 		destroy();
-
-		/*wave_timer = 0;
-		wave_number = 1;*/
 	}
 }

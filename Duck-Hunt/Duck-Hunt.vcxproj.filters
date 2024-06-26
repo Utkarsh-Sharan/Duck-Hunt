@@ -72,6 +72,9 @@
     <ClCompile Include="Source\UI\UIElements\TextView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Wave\WaveService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Main\GameService.h">
@@ -134,5 +137,46 @@
     <ClInclude Include="Header\UI\UIElements\TextView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Wave\WaveService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\textures\Backgrounds.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\Backgrounds1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\Ducks.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\NES - Duck Hunt - The Dog.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\NES - Duck Hunt - Title Screen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\normal_bullet.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\player_life.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\radius_bullet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\duck.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\Backgrounds-removebg-preview.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\FEASFBRG.TTF" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes" />
   </ItemGroup>
 </Project>

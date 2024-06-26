@@ -6,7 +6,7 @@ namespace Enemy
 	{
 		BlackDuckController::BlackDuckController(EnemyType type) : EnemyController(type)
 		{
-
+			
 		}
 
 		BlackDuckController::~BlackDuckController()
