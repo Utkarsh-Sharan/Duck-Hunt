@@ -64,6 +64,7 @@ namespace Global
 			enemy_service->update();
 		}
 		
+		printf("game state: %d\n", static_cast<int>(getGameplayService()->getGameState()));
 		ui_service->update();
 	}
 

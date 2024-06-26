@@ -2,6 +2,8 @@
 #include "Global/ServiceLocator.h"
 #include "Gameplay/GameplayService.h"
 
+#include "UI/UIElements/TextView.h"
+
 namespace UI
 {
 	using namespace Interface;
@@ -9,6 +11,7 @@ namespace UI
 	using namespace SplashScreen;
 	using namespace Global;
 	using namespace Gameplay;
+	using namespace UI::UIElement;
 
 	UIService::UIService()
 	{
@@ -31,6 +34,7 @@ namespace UI
 
 	void UIService::initialize()
 	{
+		TextView::initializeTextView();
 		initializeControllers();
 	}
 
