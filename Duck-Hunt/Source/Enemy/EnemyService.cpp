@@ -24,14 +24,16 @@ namespace Enemy
 
 	void EnemyService::initialize()
 	{
-		gameplay_service = ServiceLocator::getInstance()->getGameplayService();
+		/*gameplay_service = ServiceLocator::getInstance()->getGameplayService();
 		gameplay_service->setGameState(GameState::SPLASH_SCREEN);
-		wave_number = 1;
+		wave_number = 1;*/
 	}
 
 	void EnemyService::update()
 	{
-		switch (gameplay_service->getGameState())
+		processEnemySpawn();
+
+		/*switch (gameplay_service->getGameState())
 		{
 		case GameState::SPLASH_SCREEN:
 			updateWavePauseTimer();
@@ -40,7 +42,7 @@ namespace Enemy
 		case GameState::GAMEPLAY:
 			updateWaveTimer();
 			break;
-		}
+		}*/
 		
 		for (int i = 0; i < enemy_list.size(); i++)
 		{
@@ -48,7 +50,7 @@ namespace Enemy
 		}
 	}
 
-	void EnemyService::updateWavePauseTimer()
+	/*void EnemyService::updateWavePauseTimer()
 	{
 		wave_pause_timer += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 		if (wave_pause_timer >= wave_pause)
@@ -56,9 +58,9 @@ namespace Enemy
 			wave_pause_timer = 0.0f;
 			gameplay_service->setGameState(GameState::GAMEPLAY);
 		}
-	}
+	}*/
 
-	void EnemyService::updateWaveTimer()
+	/*void EnemyService::updateWaveTimer()
 	{
 		wave_timer += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
@@ -69,12 +71,12 @@ namespace Enemy
 			wave_number++;
 		}
 
-		processEnemySpawn();
-	}
+		
+	}*/
 
 	void EnemyService::processEnemySpawn()
 	{
-		if (number_of_enemies != wave_number + 1)
+		if (number_of_enemies != ServiceLocator::getInstance()->getWaveService()->getWaveNumber() + 1)
 		{
 			spawnEnemy();
 			number_of_enemies++;
@@ -135,7 +137,7 @@ namespace Enemy
 	{
 		destroy();
 
-		wave_timer = 0;
-		wave_number = 1;
+		/*wave_timer = 0;
+		wave_number = 1;*/
 	}
 }

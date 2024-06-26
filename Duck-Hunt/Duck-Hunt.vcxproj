@@ -149,6 +149,7 @@
     <ClCompile Include="Source\UI\UIElements\TextView.cpp" />
     <ClCompile Include="Source\UI\UIElements\UIView.cpp" />
     <ClCompile Include="Source\UI\UIService.cpp" />
+    <ClCompile Include="Source\Wave\WaveService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Enemy\Controllers\BlackDuckController.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Header\UI\UIElements\TextView.h" />
     <ClInclude Include="Header\UI\UIElements\UIView.h" />
     <ClInclude Include="Header\UI\UIService.h" />
+    <ClInclude Include="Header\Wave\WaveService.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
