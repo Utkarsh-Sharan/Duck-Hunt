@@ -5,6 +5,7 @@ namespace Global
 	using namespace Graphic;
 	using namespace Event;
 	using namespace Time;
+	using namespace Wave;
 	using namespace Gameplay;
 	using namespace Enemy;
 	using namespace UI;
@@ -14,6 +15,7 @@ namespace Global
 		graphic_service = nullptr;
 		event_service = nullptr;
 		time_service = nullptr;
+		wave_service = nullptr;
 		gameplay_service = nullptr;
 		enemy_service = nullptr;
 		ui_service = nullptr;
@@ -31,7 +33,8 @@ namespace Global
 		graphic_service = new GraphicService();
 		event_service = new EventService();
 		time_service = new TimeService();
-		gameplay_service = new Gameplay::GameplayService();
+		wave_service = new WaveService();
+		gameplay_service = new GameplayService();
 		enemy_service = new EnemyService();
 		ui_service = new UIService();
 	}
@@ -47,6 +50,7 @@ namespace Global
 		graphic_service->initialize();
 		event_service->initialize();
 		time_service->initialize();
+		wave_service->initialize();
 		gameplay_service->initialize();
 		enemy_service->initialize();
 		ui_service->initialize();
@@ -57,6 +61,7 @@ namespace Global
 		graphic_service->update();
 		event_service->update();
 		time_service->update();
+		wave_service->update();
 
 		if (getGameplayService()->getGameState() == GameState::GAMEPLAY)
 		{
@@ -64,7 +69,6 @@ namespace Global
 			enemy_service->update();
 		}
 		
-		printf("game state: %d\n", static_cast<int>(getGameplayService()->getGameState()));
 		ui_service->update();
 	}
 
@@ -86,6 +90,7 @@ namespace Global
 		delete(graphic_service);
 		delete(event_service);
 		delete(time_service);
+		delete(wave_service);
 		delete(gameplay_service);
 		delete(enemy_service);
 		delete(ui_service);
@@ -93,6 +98,7 @@ namespace Global
 		graphic_service = nullptr;
 		event_service = nullptr;
 		time_service = nullptr;
+		wave_service = nullptr;
 		gameplay_service = nullptr;
 		enemy_service = nullptr;
 		ui_service = nullptr;
@@ -116,6 +122,11 @@ namespace Global
 	TimeService* ServiceLocator::getTimeService()
 	{
 		return time_service;
+	}
+
+	Wave::WaveService* ServiceLocator::getWaveService()
+	{
+		return wave_service;
 	}
 
 	Gameplay::GameplayService* ServiceLocator::getGameplayService()
