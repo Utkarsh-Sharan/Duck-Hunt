@@ -24,55 +24,18 @@ namespace Enemy
 
 	void EnemyService::initialize()
 	{
-		/*gameplay_service = ServiceLocator::getInstance()->getGameplayService();
-		gameplay_service->setGameState(GameState::SPLASH_SCREEN);
-		wave_number = 1;*/
+		
 	}
 
 	void EnemyService::update()
 	{
 		processEnemySpawn();
-
-		/*switch (gameplay_service->getGameState())
-		{
-		case GameState::SPLASH_SCREEN:
-			updateWavePauseTimer();
-			break;
-
-		case GameState::GAMEPLAY:
-			updateWaveTimer();
-			break;
-		}*/
 		
 		for (int i = 0; i < enemy_list.size(); i++)
 		{
 			enemy_list[i]->update();
 		}
 	}
-
-	/*void EnemyService::updateWavePauseTimer()
-	{
-		wave_pause_timer += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
-		if (wave_pause_timer >= wave_pause)
-		{
-			wave_pause_timer = 0.0f;
-			gameplay_service->setGameState(GameState::GAMEPLAY);
-		}
-	}*/
-
-	/*void EnemyService::updateWaveTimer()
-	{
-		wave_timer += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
-
-		if (wave_timer >= wave_time)
-		{
-			wave_timer = 0.0f;
-			gameplay_service->setGameState(GameState::SPLASH_SCREEN);
-			wave_number++;
-		}
-
-		
-	}*/
 
 	void EnemyService::processEnemySpawn()
 	{

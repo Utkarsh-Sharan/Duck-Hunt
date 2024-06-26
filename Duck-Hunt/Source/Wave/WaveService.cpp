@@ -59,7 +59,7 @@ namespace Wave
 		}
 	}
 
-	float WaveService::getWaveNumber()
+	int WaveService::getWaveNumber()
 	{
 		return wave_number;
 	}

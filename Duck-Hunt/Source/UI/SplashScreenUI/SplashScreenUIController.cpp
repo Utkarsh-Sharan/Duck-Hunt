@@ -1,6 +1,5 @@
 #include "UI/SplashScreenUI/SplashScreenUIController.h"
 #include "Global/ServiceLocator.h"
-#include "Gameplay/GameplayService.h"
 
 namespace UI
 {
@@ -9,6 +8,7 @@ namespace UI
 		using namespace UI::UIElement;
 		using namespace Global;
 		using namespace Gameplay;
+		using namespace Wave;
 
 		SplashScreenUIController::SplashScreenUIController()
 		{
@@ -45,7 +45,7 @@ namespace UI
 
 		void SplashScreenUIController::updateWaveText()
 		{
-			sf::String wave_string = "Wave  :  " + std::to_string(1/*PlayerModel::enemies_killed*/);
+			sf::String wave_string = "Wave  :  " + std::to_string(ServiceLocator::getInstance()->getWaveService()->getWaveNumber());
 			wave_text->setText(wave_string);
 		}
 

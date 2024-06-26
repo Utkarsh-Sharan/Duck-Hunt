@@ -12,7 +12,7 @@ namespace Wave
 
 		float wave_timer;
 		float wave_pause_timer;
-		float wave_number;
+		int wave_number;
 
 		Gameplay::GameplayService* gameplay_service;
 
@@ -26,6 +26,6 @@ namespace Wave
 		void initialize();
 		void update();
 
-		float getWaveNumber();
+		int getWaveNumber();
 	};
 }
