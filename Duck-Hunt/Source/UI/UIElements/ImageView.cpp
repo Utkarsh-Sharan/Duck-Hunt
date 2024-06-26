@@ -8,12 +8,14 @@ namespace UI
 
 		ImageView::~ImageView() = default;
 
-		void ImageView::initialize(sf::String texture_path, float image_width, float image_height, sf::Vector2f position)
+		void ImageView::initialize(sf::String texture_path, float image_width, float image_height, float tile_width, float tile_height, sf::Vector2f position)
 		{
 			UIView::initialize();
 
 			setTexture(texture_path);
-			setScale(image_width, image_height);
+			setTextureRect(sf::IntRect(0, 0, tile_width, tile_height));
+			//setScale(image_width, image_height);
+			setScale(image_width, image_height, tile_width, tile_height);
 			setPosition(position);
 		}
 
@@ -25,10 +27,23 @@ namespace UI
 			}
 		}
 
-		void ImageView::setScale(float width, float height)
+		void ImageView::setTextureRect(sf::IntRect texture_rect)
+		{
+			image_sprite.setTextureRect(texture_rect);
+		}
+
+		/*void ImageView::setScale(float width, float height)
 		{
 			float scale_x = width / image_sprite.getTexture()->getSize().x;
 			float scale_y = height / image_sprite.getTexture()->getSize().y;
+
+			image_sprite.setScale(scale_x, scale_y);
+		}*/
+
+		void ImageView::setScale(float width, float height, float tile_width, float tile_height)
+		{
+			float scale_x = width / tile_width;
+			float scale_y = height / tile_height;
 
 			image_sprite.setScale(scale_x, scale_y);
 		}
