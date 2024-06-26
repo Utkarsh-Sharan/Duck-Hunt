@@ -14,5 +14,7 @@ namespace Global
 
 		static const sf::String normal_bullet_texture_path;
 		static const sf::String radius_bullet_texture_path;
+
+		static const sf::String feasfbrg_font_path;
 	};
 }
