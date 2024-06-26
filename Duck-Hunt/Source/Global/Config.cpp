@@ -1,6 +1,6 @@
 #include "Global/Config.h"
 
-namespace Config
+namespace Global
 {
 	const sf::String Config::background_texture_path = "assets/textures/Backgrounds.png";
 

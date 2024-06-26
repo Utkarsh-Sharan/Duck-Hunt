@@ -22,7 +22,7 @@ namespace UI
 
 			virtual void setTexture(sf::String texture_path);
 			virtual void setTextureRect(sf::IntRect texture_rect);
-			virtual void setScale(float width, float height);
+			//virtual void setScale(float width, float height);
 			virtual void setScale(float width, float height, float tile_width, float tile_height);
 
 			virtual void setPosition(sf::Vector2f position);
