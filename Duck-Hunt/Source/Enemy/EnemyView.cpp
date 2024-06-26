@@ -29,7 +29,7 @@ namespace Enemy
 
 	void EnemyView::initializeImage()
 	{
-		enemy_image->initialize(getEnemyTexturePath(), enemy_sprite_width, enemy_sprite_height, enemy_controller->getEnemyPosition());
+		enemy_image->initialize(getEnemyTexturePath(), enemy_sprite_width, enemy_sprite_height, tile_width, tile_height, enemy_controller->getEnemyPosition());
 	}
 
 	sf::String EnemyView::getEnemyTexturePath()
