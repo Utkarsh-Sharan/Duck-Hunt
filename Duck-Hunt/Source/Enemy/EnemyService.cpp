@@ -48,6 +48,7 @@ namespace Enemy
 
 	EnemyController* EnemyService::spawnEnemy()
 	{
+		printf("HI");
 		EnemyController* enemy_controller = createEnemy(getRandomEnemyType());
 		enemy_controller->initialize();
 
