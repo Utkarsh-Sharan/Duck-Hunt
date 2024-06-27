@@ -10,9 +10,9 @@ namespace UI
 		class SplashScreenUIController : public Interface::IUIController
 		{
 		private:
-			const float font_size = 160.f;
+			const float font_size = 100.f;
 
-			const float text_y_position = 540.f;
+			const float text_y_position = 340.f;
 			const float wave_text_x_position = 960.f;
 
 			const sf::Color text_color = sf::Color::White;
