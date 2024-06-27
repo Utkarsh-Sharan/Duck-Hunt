@@ -179,6 +179,7 @@
     <ClInclude Include="Header\Wave\WaveService.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\textures\background.png" />
     <Image Include="assets\textures\Backgrounds-removebg-preview.png" />
     <Image Include="assets\textures\Backgrounds.png" />
     <Image Include="assets\textures\Backgrounds1.png" />
