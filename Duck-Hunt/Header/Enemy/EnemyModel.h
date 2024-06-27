@@ -19,7 +19,7 @@ namespace Enemy
 		MovementDirection movement_direction;
 
 	public:
-		const sf::Vector2f left_most_position = sf::Vector2f(50.f, 50.f);
+		const sf::Vector2f left_most_position = sf::Vector2f(50.f, 900.f);
 		const sf::Vector2f right_most_position = sf::Vector2f(1800.f, 50.f);
 
 		const float enemy_movement_speed = 250.0f;
@@ -45,5 +45,7 @@ namespace Enemy
 
 		MovementDirection getMovementDirection();
 		void setMovementDirection(MovementDirection direction);
+
+		MovementDirection getRandomMovementDirection();
 	};
 }

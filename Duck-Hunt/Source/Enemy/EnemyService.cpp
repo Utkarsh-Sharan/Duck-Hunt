@@ -14,7 +14,7 @@ namespace Enemy
 
 	EnemyService::EnemyService()
 	{
-
+		std::srand(static_cast<unsigned>(std::time(nullptr)));
 	}
 
 	EnemyService::~EnemyService()

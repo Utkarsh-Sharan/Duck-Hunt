@@ -2,7 +2,7 @@
 
 namespace Global
 {
-	const sf::String Config::background_texture_path = "assets/textures/Backgrounds.png";
+	const sf::String Config::background_texture_path = "assets/textures/background.png";
 
 	const sf::String Config::player_life_texture_path = "assets/textures/player_life.png";
 

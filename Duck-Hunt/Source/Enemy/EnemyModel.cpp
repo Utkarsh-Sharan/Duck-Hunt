@@ -15,7 +15,7 @@ namespace Enemy
 
 	void EnemyModel::initialize()
 	{
-		movement_direction = MovementDirection::LEFT_DIAGONAL;
+		movement_direction = getRandomMovementDirection();
 		enemy_state = EnemyState::ALIVE;
 		enemy_position = reference_position;
 	}
@@ -78,5 +78,12 @@ namespace Enemy
 	void EnemyModel::setMovementDirection(MovementDirection direction)
 	{
 		movement_direction = direction;
+	}
+
+	MovementDirection EnemyModel::getRandomMovementDirection()
+	{
+		int randomType = std::rand() % 2;
+
+		return static_cast<MovementDirection>(randomType);
 	}
 }
