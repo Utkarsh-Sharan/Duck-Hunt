@@ -8,6 +8,17 @@ namespace UI
 
 		ImageView::~ImageView() = default;
 
+<<<<<<< Updated upstream
+=======
+		void ImageView::initialize(sf::String texture_path, float image_width, float image_height, sf::Vector2f position)
+		{
+			UIView::initialize();
+			setTexture(texture_path);
+			setScale(image_width, image_height);
+			setPosition(position);
+		}
+
+>>>>>>> Stashed changes
 		void ImageView::initialize(sf::String texture_path, float image_width, float image_height, float tile_width, float tile_height, sf::Vector2f position)
 		{
 			UIView::initialize();
