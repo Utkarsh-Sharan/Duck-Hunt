@@ -44,20 +44,55 @@ namespace Enemy
 		{
 			sf::Vector2f current_position = enemy_model->getEnemyPosition();
 
-			current_position.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
-			current_position.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			if (current_position.y <= enemy_model->bottom_most_position.y && !enemy_model->has_reached_top)
+			{
+				if (current_position.y <= enemy_model->top_most_position.y)
+				{
+					enemy_model->has_reached_bottom = false;
+					enemy_model->has_reached_top = true;
 
-			enemy_model->setEnemyPosition(current_position);
+					return;
+				}
+				//current_position.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+				current_position.y -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+				enemy_model->setEnemyPosition(current_position);
+
+			}
+
+			if (current_position.y >= enemy_model->top_most_position.y && !enemy_model->has_reached_bottom)
+			{
+				//current_position.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+				current_position.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+				enemy_model->setEnemyPosition(current_position);
+
+				if (current_position.y >= enemy_model->bottom_most_position.y)
+				{
+					enemy_model->has_reached_bottom = true;
+					enemy_model->has_reached_top = false;
+				}
+			}
+
+			if (current_position.x <= enemy_model->left_most_position.x)
+			{
+				enemy_model->setEnemyPosition(current_position);
+
+				movement_direction = MovementDirection::RIGHT_DIAGONAL;
+			}
 		}
 
 		void BlackDuckController::moveRightDiagonal()
 		{
 			sf::Vector2f current_position = enemy_model->getEnemyPosition();
 
-			current_position.x += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
-			current_position.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			if (current_position.y <= enemy_model->bottom_most_position.y)
+			{
+				current_position.x += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+				current_position.y -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
-			enemy_model->setEnemyPosition(current_position);
+				enemy_model->setEnemyPosition(current_position);
+			}
 		}
 	}
 }

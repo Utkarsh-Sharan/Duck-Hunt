@@ -1,13 +1,10 @@
 #pragma once
 
+#include "Enemy/EnemyConfig.h"
 #include <SFML/Graphics.hpp>
 
 namespace Enemy
 {
-	enum class EnemyType;
-	enum class MovementDirection;
-	enum class EnemyState;
-
 	class EnemyModel
 	{
 	private:
@@ -21,8 +18,13 @@ namespace Enemy
 	public:
 		const sf::Vector2f left_most_position = sf::Vector2f(50.f, 900.f);
 		const sf::Vector2f right_most_position = sf::Vector2f(1800.f, 50.f);
+		const sf::Vector2f top_most_position = sf::Vector2f(0.0f, 50.0f);
+		const sf::Vector2f bottom_most_position = sf::Vector2f(0.0f, 900.0f);
 
-		const float enemy_movement_speed = 250.0f;
+		bool has_reached_top;
+		bool has_reached_bottom;
+
+		const float enemy_movement_speed = 500.0f;
 
 		EnemyModel(EnemyType type);
 		~EnemyModel();
