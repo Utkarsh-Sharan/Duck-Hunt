@@ -13,7 +13,7 @@ namespace Enemy
 	class EnemyService
 	{
 	private:
-		float number_of_enemies;
+		int number_of_enemies = 0;
 
 		std::vector<EnemyController*> enemy_list;
 		std::vector<EnemyController*> flagged_enemy_list;

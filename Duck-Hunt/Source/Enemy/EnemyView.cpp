@@ -1,9 +1,12 @@
 #include "Enemy/EnemyView.h"
 #include "Enemy/EnemyController.h"
 
+#include "Global/Config.h"
+
 namespace Enemy
 {
 	using namespace UI::UIElement;
+	using namespace Global;
 
 	EnemyView::EnemyView()
 	{
@@ -34,7 +37,7 @@ namespace Enemy
 
 	sf::String EnemyView::getEnemyTexturePath()
 	{
-		return "assets/textures/Ducks.png";
+		return Config::ducks_texture_path;
 	}
 
 	void EnemyView::update()
