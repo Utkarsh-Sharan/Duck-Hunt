@@ -1,5 +1,4 @@
 #include "Enemy/EnemyModel.h"
-#include "Enemy/EnemyConfig.h"
 
 namespace Enemy
 {
@@ -17,6 +16,10 @@ namespace Enemy
 	{
 		movement_direction = getRandomMovementDirection();
 		enemy_state = EnemyState::ALIVE;
+
+		has_reached_bottom = true;
+		has_reached_top = false;
+
 		enemy_position = reference_position;
 	}
 
