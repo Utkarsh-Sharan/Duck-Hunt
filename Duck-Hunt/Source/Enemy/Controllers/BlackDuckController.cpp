@@ -44,7 +44,7 @@ namespace Enemy
 		{
 			sf::Vector2f current_position = enemy_model->getEnemyPosition();
 
-			if (/*current_position.y <= enemy_model->bottom_most_position.y*/ !enemy_model->has_reached_top)
+			if (!enemy_model->has_reached_top)
 			{
 				if (current_position.y <= enemy_model->top_most_position.y)
 				{
@@ -53,25 +53,27 @@ namespace Enemy
 
 					return;
 				}
+
 				current_position.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 				current_position.y -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 				enemy_model->setEnemyPosition(current_position);
-
 			}
 
-			else if (/*current_position.y <= enemy_model->top_most_position.y &&*/ !enemy_model->has_reached_bottom)
+			else if (!enemy_model->has_reached_bottom)
 			{
-				current_position.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
-				current_position.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
-
-				enemy_model->setEnemyPosition(current_position);
-
 				if (current_position.y >= enemy_model->bottom_most_position.y)
 				{
 					enemy_model->has_reached_bottom = true;
 					enemy_model->has_reached_top = false;
+
+					return;
 				}
+
+				current_position.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+				current_position.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+				enemy_model->setEnemyPosition(current_position);
 			}
 
 			if (current_position.x <= enemy_model->left_most_position.x)
@@ -86,12 +88,43 @@ namespace Enemy
 		{
 			sf::Vector2f current_position = enemy_model->getEnemyPosition();
 
-			if (current_position.y <= enemy_model->bottom_most_position.y)
+			if (!enemy_model->has_reached_top)
 			{
+				if (current_position.y <= enemy_model->top_most_position.y)
+				{
+					enemy_model->has_reached_bottom = false;
+					enemy_model->has_reached_top = true;
+
+					return;
+				}
+
 				current_position.x += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 				current_position.y -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 				enemy_model->setEnemyPosition(current_position);
+			}
+
+			else if (!enemy_model->has_reached_bottom)
+			{
+				if (current_position.y >= enemy_model->bottom_most_position.y)
+				{
+					enemy_model->has_reached_bottom = true;
+					enemy_model->has_reached_top = false;
+
+					return;
+				}
+
+				current_position.x += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+				current_position.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+				enemy_model->setEnemyPosition(current_position);
+			}
+
+			if (current_position.x >= enemy_model->right_most_position.x)
+			{
+				enemy_model->setEnemyPosition(current_position);
+
+				movement_direction = MovementDirection::LEFT_DIAGONAL;
 			}
 		}
 	}
