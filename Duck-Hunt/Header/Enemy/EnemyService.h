@@ -21,8 +21,6 @@ namespace Enemy
 		EnemyType getRandomEnemyType();
 		EnemyController* createEnemy(EnemyType enemy_type);
 
-		void processEnemySpawn();
-
 		void destroyFlaggedEnemies();
 		void destroy();
 
@@ -33,6 +31,8 @@ namespace Enemy
 		void initialize();
 		void update();
 		void render();
+
+		void processEnemySpawn();
 
 		void reset();
 

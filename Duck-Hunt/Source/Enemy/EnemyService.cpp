@@ -29,8 +29,8 @@ namespace Enemy
 
 	void EnemyService::update()
 	{
-		processEnemySpawn();
-		
+		//processEnemySpawn();
+
 		for (int i = 0; i < enemy_list.size(); i++)
 		{
 			enemy_list[i]->update();
@@ -39,10 +39,11 @@ namespace Enemy
 
 	void EnemyService::processEnemySpawn()
 	{
-		if (number_of_enemies != ServiceLocator::getInstance()->getWaveService()->getWaveNumber() + 1)
+		number_of_enemies = ServiceLocator::getInstance()->getWaveService()->getWaveNumber() + 1;
+
+		for (int i = 0; i < number_of_enemies; i++)
 		{
 			spawnEnemy();
-			number_of_enemies++;
 		}
 	}
 
@@ -93,7 +94,14 @@ namespace Enemy
 
 	void EnemyService::destroy()
 	{
+		for (int i = 0; i < enemy_list.size(); i++)
+		{
+			//ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<ICollider*>(enemy_list[i]));
+			delete(enemy_list[i]);
 
+			enemy_list[i] = nullptr;
+		}
+		enemy_list.clear();
 	}
 
 	void EnemyService::reset()

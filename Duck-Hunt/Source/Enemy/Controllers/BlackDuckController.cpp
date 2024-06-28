@@ -44,7 +44,7 @@ namespace Enemy
 		{
 			sf::Vector2f current_position = enemy_model->getEnemyPosition();
 
-			if (current_position.y <= enemy_model->bottom_most_position.y && !enemy_model->has_reached_top)
+			if (/*current_position.y <= enemy_model->bottom_most_position.y*/ !enemy_model->has_reached_top)
 			{
 				if (current_position.y <= enemy_model->top_most_position.y)
 				{
@@ -53,16 +53,16 @@ namespace Enemy
 
 					return;
 				}
-				//current_position.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+				current_position.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 				current_position.y -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 				enemy_model->setEnemyPosition(current_position);
 
 			}
 
-			if (current_position.y >= enemy_model->top_most_position.y && !enemy_model->has_reached_bottom)
+			else if (/*current_position.y <= enemy_model->top_most_position.y &&*/ !enemy_model->has_reached_bottom)
 			{
-				//current_position.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+				current_position.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 				current_position.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 				enemy_model->setEnemyPosition(current_position);

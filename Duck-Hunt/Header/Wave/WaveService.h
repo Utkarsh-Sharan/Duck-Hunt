@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Gameplay/GameplayService.h"
+#include "Enemy/EnemyService.h"
 
 namespace Wave
 {
@@ -15,6 +16,7 @@ namespace Wave
 		int wave_number;
 
 		Gameplay::GameplayService* gameplay_service;
+		Enemy::EnemyService* enemy_service;
 
 		void updateWaveTimer();
 		void updateWavePauseTimer();
