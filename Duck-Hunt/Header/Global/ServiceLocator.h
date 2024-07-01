@@ -6,6 +6,7 @@
 #include "Wave/WaveService.h"
 #include "Gameplay/GameplayService.h"
 #include "Enemy/EnemyService.h"
+#include "Player/PlayerService.h"
 #include "UI/UIService.h"
 
 namespace Global
@@ -19,6 +20,7 @@ namespace Global
 		Wave::WaveService* wave_service;
 		Gameplay::GameplayService* gameplay_service;
 		Enemy::EnemyService* enemy_service;
+		Player::PlayerService* player_service;
 		UI::UIService* ui_service;
 
 		ServiceLocator();
@@ -42,6 +44,7 @@ namespace Global
 		Wave::WaveService* getWaveService();
 		Gameplay::GameplayService* getGameplayService();
 		Enemy::EnemyService* getEnemyService();
+		Player::PlayerService* getPlayerService();
 		UI::UIService* getUIService();
 	};
 }

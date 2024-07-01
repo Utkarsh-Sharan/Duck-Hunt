@@ -8,6 +8,7 @@ namespace Global
 	using namespace Wave;
 	using namespace Gameplay;
 	using namespace Enemy;
+	using namespace Player;
 	using namespace UI;
 
 	ServiceLocator::ServiceLocator()
@@ -18,6 +19,7 @@ namespace Global
 		wave_service = nullptr;
 		gameplay_service = nullptr;
 		enemy_service = nullptr;
+		player_service = nullptr;
 		ui_service = nullptr;
 
 		createServices();
@@ -36,6 +38,7 @@ namespace Global
 		wave_service = new WaveService();
 		gameplay_service = new GameplayService();
 		enemy_service = new EnemyService();
+		player_service = new PlayerService();
 		ui_service = new UIService();
 	}
 
@@ -53,6 +56,7 @@ namespace Global
 		wave_service->initialize();
 		gameplay_service->initialize();
 		enemy_service->initialize();
+		player_service->initialize();
 		ui_service->initialize();
 	}
 
@@ -67,6 +71,7 @@ namespace Global
 		{
 			gameplay_service->update();
 			enemy_service->update();
+			player_service->update();
 		}
 		
 		ui_service->update();
@@ -93,6 +98,7 @@ namespace Global
 		delete(wave_service);
 		delete(gameplay_service);
 		delete(enemy_service);
+		delete(player_service);
 		delete(ui_service);
 
 		graphic_service = nullptr;
@@ -101,6 +107,7 @@ namespace Global
 		wave_service = nullptr;
 		gameplay_service = nullptr;
 		enemy_service = nullptr;
+		player_service = nullptr;
 		ui_service = nullptr;
 	}
 
@@ -137,6 +144,11 @@ namespace Global
 	EnemyService* ServiceLocator::getEnemyService()
 	{
 		return enemy_service;
+	}
+
+	Player::PlayerService* ServiceLocator::getPlayerService()
+	{
+		return player_service;
 	}
 
 	UI::UIService* ServiceLocator::getUIService()

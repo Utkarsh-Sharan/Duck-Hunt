@@ -27,7 +27,7 @@ namespace Gameplay
 		void update();
 		void render();
 
-		void reset();
+		void restart();
 
 		static GameState getGameState();
 		static void setGameState(GameState state);
