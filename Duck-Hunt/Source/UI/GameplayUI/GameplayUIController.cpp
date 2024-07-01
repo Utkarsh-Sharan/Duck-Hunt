@@ -1,5 +1,7 @@
 #include "UI/GameplayUI/GameplayUIController.h"
 
+#include "Player/PlayerModel.h"
+
 #include "Global/Config.h"
 #include "Global/ServiceLocator.h"
 
@@ -9,6 +11,7 @@ namespace UI
 	{
 		using namespace Global;
 		using namespace UI::UIElement;
+		using namespace Player;
 
 		GameplayUIController::GameplayUIController()
 		{
@@ -61,6 +64,12 @@ namespace UI
 				player_lives_image->setPosition(sf::Vector2f(player_lives_x_offset - (i * player_lives_spacing), player_lives_y_offset));
 				player_lives_image->render();
 			}
+		}
+
+		void GameplayUIController::updateEnemiesKilledText()
+		{
+			sf::String enemies_killed_string = "Enemies Killed  :  " + std::to_string(PlayerModel::enemies_killed);
+			enemies_killed_text->setText(enemies_killed_string);
 		}
 
 		void GameplayUIController::drawNormalBullets()

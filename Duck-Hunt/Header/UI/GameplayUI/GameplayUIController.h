@@ -1,7 +1,9 @@
 #pragma once
 
 #include "UI/Interface/IUIController.h"
+
 #include "UI/UIElements/ImageView.h"
+#include "UI/UIElements/TextView.h"
 
 namespace UI
 {
@@ -26,9 +28,14 @@ namespace UI
 			const float bullets_sprite_width = 30.f;
 			const float bullets_sprite_height = 40.f;
 
+			const float enemies_killed_text_y_position = 950.f;
+			const float enemies_killed_text_x_position = 950.f;
+
 			UI::UIElement::ImageView* player_lives_image;
 			UI::UIElement::ImageView* normal_bullets_image;
 			UI::UIElement::ImageView* radius_bullets_image;
+
+			UI::UIElement::TextView* enemies_killed_text;
 
 			void createUIElements();
 			void initializeImage();
@@ -44,6 +51,7 @@ namespace UI
 			void render() override;
 			void show() override;
 
+			void updateEnemiesKilledText();
 			void drawNormalBullets();
 			void drawRadiusBullets();
 			void drawPlayerLives();
