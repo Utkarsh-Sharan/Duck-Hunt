@@ -27,8 +27,11 @@ namespace Player
 		PlayerState player_state;
 
 		int player_score;
+
 		static int player_lives;
 		static int enemies_killed;
+		static int player_normal_bullets;
+		static int player_radius_bullets;
 
 	public:
 		PlayerModel();

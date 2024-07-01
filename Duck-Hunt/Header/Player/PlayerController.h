@@ -22,6 +22,9 @@ namespace Player
 		void reset();
 
 		void decreasePlayerLive();
+		void decreasePlayerNormalBullets();
+		void decreasePlayerRadiusBullets();
+
 		inline void increaseEnemiesKilled(int val) { PlayerModel::enemies_killed += val; }
 	};
 }

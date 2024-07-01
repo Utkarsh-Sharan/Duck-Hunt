@@ -28,7 +28,6 @@ namespace UI
 			player_lives_image = new ImageView();
 			normal_bullets_image = new ImageView();
 			radius_bullets_image = new ImageView();
-			
 		}
 
 		void GameplayUIController::initialize()
@@ -76,7 +75,7 @@ namespace UI
 		{
 			sf::RenderWindow* game_window = Global::ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
-			for (int i = 0; i < 3 /*PlayerModel::player_bullets*/; i++)
+			for (int i = 0; i < PlayerModel::player_normal_bullets; i++)
 			{
 				normal_bullets_image->setPosition(sf::Vector2f(bullets_x_offset + (i * bullets_spacing), normal_bullets_y_offset));
 				normal_bullets_image->render();
@@ -87,7 +86,7 @@ namespace UI
 		{
 			sf::RenderWindow* game_window = Global::ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
-			for (int i = 0; i < 1 /*PlayerModel::player_bullets*/; i++)
+			for (int i = 0; i < PlayerModel::player_radius_bullets; i++)
 			{
 				radius_bullets_image->setPosition(sf::Vector2f(bullets_x_offset + (i * bullets_spacing), radius_bullets_y_offset));
 				radius_bullets_image->render();

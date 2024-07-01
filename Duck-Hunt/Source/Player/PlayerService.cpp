@@ -30,7 +30,7 @@ namespace Player
 
 	void PlayerService::increaseEnemiesKilled(int val)
 	{
-		player_controller->increaseEnemiesKilled(val);
+		player_controller->increaseEnemiesKilled(val);	//inline function in the controller
 	}
 
 	void PlayerService::reset()

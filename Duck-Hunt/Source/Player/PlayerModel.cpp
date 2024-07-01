@@ -25,6 +25,9 @@ namespace Player
 		player_state = PlayerState::ALIVE;
 
 		player_score = 0;
+		player_normal_bullets = 0;
+		player_radius_bullets = 0;
+
 		player_lives = max_player_lives;
 		enemies_killed = 0;
 	}

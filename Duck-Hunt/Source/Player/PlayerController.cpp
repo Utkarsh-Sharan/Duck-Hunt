@@ -41,6 +41,16 @@ namespace Player
 		}
 	}
 
+	void PlayerController::decreasePlayerNormalBullets()
+	{
+		PlayerModel::player_normal_bullets -= 1;
+	}
+
+	void PlayerController::decreasePlayerRadiusBullets()
+	{
+		PlayerModel::player_radius_bullets -= 1;
+	}
+
 	void PlayerController::reset()
 	{
 		player_model->reset();
