@@ -1,5 +1,6 @@
 #include "Enemy/EnemyView.h"
 #include "Enemy/EnemyController.h"
+#include "Enemy/EnemyConfig.h"
 
 #include "Global/Config.h"
 
@@ -37,7 +38,17 @@ namespace Enemy
 
 	sf::String EnemyView::getEnemyTexturePath()
 	{
-		return Config::ducks_texture_path;
+		switch (enemy_controller->getEnemyType())
+		{
+		case EnemyType::BLACK:
+			return Config::black_duck_texture_path;
+
+		case EnemyType::RED:
+			return Config::red_duck_texture_path;
+
+		case EnemyType::BLUE:
+			return Config::blue_duck_texture_path;
+		}
 	}
 
 	void EnemyView::update()
