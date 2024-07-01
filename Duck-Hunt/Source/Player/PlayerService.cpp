@@ -28,11 +28,6 @@ namespace Player
 		player_controller->update();
 	}
 
-	void PlayerService::render()
-	{
-		player_controller->render();
-	}
-
 	void PlayerService::increaseEnemiesKilled(int val)
 	{
 		player_controller->increaseEnemiesKilled(val);
