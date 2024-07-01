@@ -25,5 +25,22 @@ namespace Player
 		const int max_player_lives = 3;
 
 		PlayerState player_state;
+
+		int player_score;
+		static int player_lives;
+		static int enemies_killed;
+
+	public:
+		PlayerModel();
+		~PlayerModel();
+
+		void initialize();
+		void reset();
+
+		int getPlayerScore();
+		void setPlayerScore(int score);
+
+		PlayerState getPlayerState();
+		void setPlayerState(PlayerState state);
 	};
 }

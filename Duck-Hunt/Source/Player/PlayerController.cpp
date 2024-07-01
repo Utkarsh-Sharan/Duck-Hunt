@@ -1,7 +1,12 @@
 #include "Player/PlayerController.h"
+#include "Player/PlayerModel.h"
+
+#include "Global/ServiceLocator.h"
 
 namespace Player
 {
+	using namespace Global;
+
 	PlayerController::PlayerController()
 	{
 		player_model = new PlayerModel();
@@ -31,7 +36,7 @@ namespace Player
 		if (PlayerModel::player_lives <= 0)
 		{
 			player_model->setPlayerState(PlayerState::DEAD);
-			Global::ServiceLocator::getInstance()->getGameplayService()->restart();
+			//ServiceLocator::getInstance()->getGameplayService()->restart();
 		}
 	}
 

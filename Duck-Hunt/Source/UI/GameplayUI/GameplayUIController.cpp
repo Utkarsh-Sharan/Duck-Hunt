@@ -59,7 +59,7 @@ namespace UI
 		{
 			sf::RenderWindow* game_window = Global::ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
-			for (int i = 0; i < 3 /*PlayerModel::player_lives*/; i++)
+			for (int i = 0; i < PlayerModel::player_lives; i++)
 			{
 				player_lives_image->setPosition(sf::Vector2f(player_lives_x_offset - (i * player_lives_spacing), player_lives_y_offset));
 				player_lives_image->render();
