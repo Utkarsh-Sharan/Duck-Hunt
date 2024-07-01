@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClCompile Include="Source\Enemy\Controllers\BlackDuckController.cpp" />
     <ClCompile Include="Source\Enemy\Controllers\BlueDuckController.cpp" />
+    <ClCompile Include="Source\Enemy\Controllers\RedDuckController.cpp" />
     <ClCompile Include="Source\Enemy\EnemyController.cpp" />
     <ClCompile Include="Source\Enemy\EnemyModel.cpp" />
     <ClCompile Include="Source\Enemy\EnemyService.cpp" />
@@ -157,6 +158,7 @@
   <ItemGroup>
     <ClInclude Include="Header\Enemy\Controllers\BlackDuckController.h" />
     <ClInclude Include="Header\Enemy\Controllers\BlueDuckController.h" />
+    <ClInclude Include="Header\Enemy\Controllers\RedDuckController.h" />
     <ClInclude Include="Header\Enemy\EnemyConfig.h" />
     <ClInclude Include="Header\Enemy\EnemyController.h" />
     <ClInclude Include="Header\Enemy\EnemyModel.h" />

@@ -4,6 +4,7 @@
 
 #include "Enemy/Controllers/BlackDuckController.h"
 #include "Enemy/Controllers/BlueDuckController.h"
+#include "Enemy/Controllers/RedDuckController.h"
 
 #include "Global/ServiceLocator.h"
 
@@ -68,12 +69,15 @@ namespace Enemy
 
 		case EnemyType::BLUE:
 			return new BlueDuckController(EnemyType::BLUE);
+
+		case EnemyType::RED:
+			return new RedDuckController(EnemyType::RED);
 		}
 	}
 
 	EnemyType EnemyService::getRandomEnemyType()
 	{
-		int randomType = std::rand() % 2;
+		int randomType = std::rand() % 3;
 
 		return static_cast<EnemyType>(randomType);
 	}
