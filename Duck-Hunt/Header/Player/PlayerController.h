@@ -1,11 +1,11 @@
 #pragma once
 
+#include "Player/PlayerModel.h"
 #include <SFML/Graphics.hpp>
 
 namespace Player
 {
 	enum class PlayerState;
-	class PlayerModel;
 
 	class PlayerController
 	{

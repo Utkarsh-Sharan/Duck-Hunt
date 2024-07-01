@@ -6,6 +6,7 @@
 namespace Player
 {
 	using namespace Global;
+	using namespace Gameplay;
 
 	PlayerController::PlayerController()
 	{
@@ -36,7 +37,7 @@ namespace Player
 		if (PlayerModel::player_lives <= 0)
 		{
 			player_model->setPlayerState(PlayerState::DEAD);
-			//ServiceLocator::getInstance()->getGameplayService()->restart();
+			ServiceLocator::getInstance()->getGameplayService()->restart();
 		}
 	}
 

@@ -1,9 +1,13 @@
 #include "Gameplay/GameplayService.h"
 #include "Gameplay/GameplayController.h"
 
+#include "Global/ServiceLocator.h"
+
 namespace Gameplay
 {
 	GameState GameplayService::current_state = GameState::BOOT;
+
+	using namespace Global;
 
 	GameplayService::GameplayService()
 	{
@@ -42,9 +46,9 @@ namespace Gameplay
 		current_state = state;
 	}
 
-	void GameplayService::reset()
+	void GameplayService::restart()
 	{
-		/*ServiceLocator::getInstance()->getPlayerService()->reset();
-		ServiceLocator::getInstance()->getEnemyService()->reset();*/
+		ServiceLocator::getInstance()->getPlayerService()->reset();
+		ServiceLocator::getInstance()->getEnemyService()->reset();
 	}
 }
