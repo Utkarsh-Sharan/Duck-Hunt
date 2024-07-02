@@ -22,16 +22,16 @@ namespace UI
 			const float lives_sprite_height = 30.f;
 
 			const float normal_bullets_y_offset = 25.f;
-			const float radius_bullets_y_offset = 60.f;
+			const float radius_bullets_y_offset = 70.f;
 
 			const float bullets_x_offset = 25.f;
-			const float bullets_spacing = 60.f;
+			const float bullets_spacing = 30.f;
 
 			const float bullets_sprite_width = 30.f;
 			const float bullets_sprite_height = 40.f;
 
-			const float enemies_killed_text_y_position = 950.f;
-			const float enemies_killed_text_x_position = 950.f;
+			const float enemies_killed_text_y_position = 1035.f;
+			const float enemies_killed_text_x_position = 840.f;
 
 			const sf::Color text_color = sf::Color::White;
 
