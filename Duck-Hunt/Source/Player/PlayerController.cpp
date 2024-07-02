@@ -1,5 +1,4 @@
 #include "Player/PlayerController.h"
-#include "Player/PlayerModel.h"
 
 #include "Global/ServiceLocator.h"
 
@@ -7,6 +6,7 @@ namespace Player
 {
 	using namespace Global;
 	using namespace Gameplay;
+	using namespace Wave;
 
 	PlayerController::PlayerController()
 	{
@@ -23,11 +23,20 @@ namespace Player
 	void PlayerController::initialize()
 	{
 		player_model->initialize();
+		wave_service = ServiceLocator::getInstance()->getWaveService();
 	}
 
 	void PlayerController::update()
 	{
 
+	}
+
+	void PlayerController::processBulletsImage()
+	{
+		wave_number = wave_service->getWaveNumber();
+
+		PlayerModel::player_normal_bullets = wave_number;
+		PlayerModel::player_radius_bullets = 1;
 	}
 
 	void PlayerController::decreasePlayerLive()
@@ -41,8 +50,19 @@ namespace Player
 		}
 	}
 
+	void PlayerController::decreasePlayerNormalBullets()
+	{
+		PlayerModel::player_normal_bullets -= 1;
+	}
+
+	void PlayerController::decreasePlayerRadiusBullets()
+	{
+		PlayerModel::player_radius_bullets -= 1;
+	}
+
 	void PlayerController::reset()
 	{
 		player_model->reset();
+		player_model->resetAllBullets();
 	}
 }

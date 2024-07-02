@@ -27,8 +27,11 @@ namespace Player
 		PlayerState player_state;
 
 		int player_score;
+
 		static int player_lives;
 		static int enemies_killed;
+		static int player_normal_bullets;
+		static int player_radius_bullets;
 
 	public:
 		PlayerModel();
@@ -36,9 +39,16 @@ namespace Player
 
 		void initialize();
 		void reset();
+		void resetAllBullets();
 
 		int getPlayerScore();
 		void setPlayerScore(int score);
+
+		/*int getPlayerNormalBullets();
+		void setPlayerNormalBullets(int bullets);
+
+		int getPlayerRadiusBullets();
+		void setPlayerRadiusBullets(int bullets);*/
 
 		PlayerState getPlayerState();
 		void setPlayerState(PlayerState state);

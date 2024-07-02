@@ -4,8 +4,6 @@ namespace Main
 {
 	using namespace Global;
 
-	//GameState GameService::current_state = GameState::BOOT;		//initial state
-
 	GameService::GameService()
 	{
 		service_locator = nullptr;
@@ -29,17 +27,11 @@ namespace Main
 		service_locator->getInstance()->initialize();
 
 		initializeVariables();
-		showSplashScreen();
 	}
 
 	void GameService::initializeVariables()
 	{
 		game_window = service_locator->getInstance()->getGraphicService()->getGameWindow();
-	}
-
-	void GameService::showSplashScreen()
-	{
-		
 	}
 
 	void GameService::update()
@@ -61,16 +53,6 @@ namespace Main
 	{
 		return service_locator->getGraphicService()->isGameWindowOpen();
 	}
-
-	/*void GameService::setGameState(GameState state)
-	{
-		current_state = state;
-	}
-
-	GameState GameService::getGameState()
-	{
-		return current_state;
-	}*/
 
 	void GameService::destroy()
 	{

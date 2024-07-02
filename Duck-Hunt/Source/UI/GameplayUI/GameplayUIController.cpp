@@ -28,12 +28,14 @@ namespace UI
 			player_lives_image = new ImageView();
 			normal_bullets_image = new ImageView();
 			radius_bullets_image = new ImageView();
-			
+
+			enemies_killed_text = new TextView();
 		}
 
 		void GameplayUIController::initialize()
 		{
 			initializeImage();
+			initializeText();
 		}
 
 		void GameplayUIController::initializeImage()
@@ -43,13 +45,21 @@ namespace UI
 			radius_bullets_image->initialize(Config::radius_bullet_texture_path, bullets_sprite_width, bullets_sprite_height, sf::Vector2f(0, 0));
 		}
 
+		void GameplayUIController::initializeText()
+		{
+			sf::String enemies_killed_string = "Enemies Killed  :  0";
+
+			enemies_killed_text->initialize(enemies_killed_string, sf::Vector2f(enemies_killed_text_x_position, enemies_killed_text_y_position), FontType::FEASFBRG, font_size, text_color);
+		}
+
 		void GameplayUIController::update()
 		{
-
+			updateEnemiesKilledText();
 		}
 
 		void GameplayUIController::render()
 		{
+			enemies_killed_text->render();
 			drawPlayerLives();
 			drawNormalBullets();
 			drawRadiusBullets();
@@ -76,7 +86,7 @@ namespace UI
 		{
 			sf::RenderWindow* game_window = Global::ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
-			for (int i = 0; i < 3 /*PlayerModel::player_bullets*/; i++)
+			for (int i = 0; i < PlayerModel::player_normal_bullets; i++)
 			{
 				normal_bullets_image->setPosition(sf::Vector2f(bullets_x_offset + (i * bullets_spacing), normal_bullets_y_offset));
 				normal_bullets_image->render();
@@ -87,7 +97,7 @@ namespace UI
 		{
 			sf::RenderWindow* game_window = Global::ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
-			for (int i = 0; i < 1 /*PlayerModel::player_bullets*/; i++)
+			for (int i = 0; i < PlayerModel::player_radius_bullets; i++)
 			{
 				radius_bullets_image->setPosition(sf::Vector2f(bullets_x_offset + (i * bullets_spacing), radius_bullets_y_offset));
 				radius_bullets_image->render();
