@@ -14,9 +14,9 @@ namespace Global
 	const sf::String Config::red_duck_texture_path = "assets/textures/red_duck.png";
 
 
-	const sf::String Config::normal_bullet_texture_path = "assets/textures/normal_bullet.jpg";
+	const sf::String Config::normal_bullet_texture_path = "assets/textures/normal_bullet1.png";
 
-	const sf::String Config::radius_bullet_texture_path = "assets/textures/radius_bullet.png";
+	const sf::String Config::radius_bullet_texture_path = "assets/textures/radius_bullet1.png";
 
 
 	const sf::String Config::feasfbrg_font_path = "assets/fonts/FEASFBRG.TTF";

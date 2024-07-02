@@ -20,6 +20,7 @@ namespace Player
 	void PlayerModel::initialize()
 	{
 		reset();
+		resetAllBullets();
 	}
 
 	void PlayerModel::reset()
@@ -47,26 +48,6 @@ namespace Player
 	{
 		player_score = score;
 	}
-
-	/*int PlayerModel::getPlayerNormalBullets()
-	{
-		return player_normal_bullets;
-	}
-
-	void PlayerModel::setPlayerNormalBullets(int bullets)
-	{
-		player_normal_bullets = bullets;
-	}
-
-	int PlayerModel::getPlayerRadiusBullets()
-	{
-		return player_radius_bullets;
-	}
-
-	void PlayerModel::setPlayerRadiusBullets(int bullets)
-	{
-		player_radius_bullets = bullets;
-	}*/
 
 	PlayerState PlayerModel::getPlayerState()
 	{
