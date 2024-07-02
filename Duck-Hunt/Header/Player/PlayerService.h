@@ -19,6 +19,7 @@ namespace Player
 		void update();
 
 		void increaseEnemiesKilled(int val);
+		void processBulletsImage();
 
 		void reset();
 	};

@@ -1,6 +1,7 @@
 #include "Player/PlayerService.h"
-#include "Global/ServiceLocator.h"
 #include "Player/PlayerController.h"
+
+#include "Global/ServiceLocator.h"
 
 namespace Player
 {
@@ -31,6 +32,11 @@ namespace Player
 	void PlayerService::increaseEnemiesKilled(int val)
 	{
 		player_controller->increaseEnemiesKilled(val);	//inline function in the controller
+	}
+
+	void PlayerService::processBulletsImage()
+	{
+		player_controller->processBulletsImage();
 	}
 
 	void PlayerService::reset()

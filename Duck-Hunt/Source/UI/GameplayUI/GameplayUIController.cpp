@@ -28,11 +28,14 @@ namespace UI
 			player_lives_image = new ImageView();
 			normal_bullets_image = new ImageView();
 			radius_bullets_image = new ImageView();
+
+			enemies_killed_text = new TextView();
 		}
 
 		void GameplayUIController::initialize()
 		{
 			initializeImage();
+			initializeText();
 		}
 
 		void GameplayUIController::initializeImage()
@@ -42,13 +45,21 @@ namespace UI
 			radius_bullets_image->initialize(Config::radius_bullet_texture_path, bullets_sprite_width, bullets_sprite_height, sf::Vector2f(0, 0));
 		}
 
+		void GameplayUIController::initializeText()
+		{
+			sf::String enemies_killed_string = "Enemies Killed  :  0";
+
+			enemies_killed_text->initialize(enemies_killed_string, sf::Vector2f(enemies_killed_text_x_position, enemies_killed_text_y_position), FontType::FEASFBRG, font_size, text_color);
+		}
+
 		void GameplayUIController::update()
 		{
-
+			updateEnemiesKilledText();
 		}
 
 		void GameplayUIController::render()
 		{
+			enemies_killed_text->render();
 			drawPlayerLives();
 			drawNormalBullets();
 			drawRadiusBullets();

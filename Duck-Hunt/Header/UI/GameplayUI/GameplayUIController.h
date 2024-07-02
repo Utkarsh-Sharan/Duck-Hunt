@@ -12,6 +12,8 @@ namespace UI
 		class GameplayUIController : public Interface::IUIController
 		{
 		private:
+			const float font_size = 40.f;
+
 			const float player_lives_y_offset = 25.f;
 			const float player_lives_x_offset = 1850.f;
 			const float player_lives_spacing = 60.f;
@@ -31,6 +33,8 @@ namespace UI
 			const float enemies_killed_text_y_position = 950.f;
 			const float enemies_killed_text_x_position = 950.f;
 
+			const sf::Color text_color = sf::Color::White;
+
 			UI::UIElement::ImageView* player_lives_image;
 			UI::UIElement::ImageView* normal_bullets_image;
 			UI::UIElement::ImageView* radius_bullets_image;
@@ -39,6 +43,7 @@ namespace UI
 
 			void createUIElements();
 			void initializeImage();
+			void initializeText();
 
 			void destroy();
 

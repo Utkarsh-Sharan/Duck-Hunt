@@ -6,6 +6,7 @@ namespace Wave
 	using namespace Global;
 	using namespace Gameplay;
 	using namespace Enemy;
+	using namespace Player;
 
 	WaveService::WaveService()
 	{
@@ -21,6 +22,7 @@ namespace Wave
 	{
 		enemy_service = ServiceLocator::getInstance()->getEnemyService();
 		gameplay_service = ServiceLocator::getInstance()->getGameplayService();
+		player_service = ServiceLocator::getInstance()->getPlayerService();
 		
 		gameplay_service->setGameState(GameState::SPLASH_SCREEN);
 		wave_number = 1;
@@ -46,8 +48,9 @@ namespace Wave
 		if (wave_pause_timer >= wave_pause)
 		{
 			wave_pause_timer = 0.0f;
-			enemy_service->processEnemySpawn();
 			gameplay_service->setGameState(GameState::GAMEPLAY);
+			enemy_service->processEnemySpawn();
+			player_service->processBulletsImage();
 		}
 	}
 

@@ -2,6 +2,7 @@
 
 #include "Gameplay/GameplayService.h"
 #include "Enemy/EnemyService.h"
+#include "Player/PlayerService.h"
 
 namespace Wave
 {
@@ -17,6 +18,7 @@ namespace Wave
 
 		Gameplay::GameplayService* gameplay_service;
 		Enemy::EnemyService* enemy_service;
+		Player::PlayerService* player_service;
 
 		void updateWaveTimer();
 		void updateWavePauseTimer();

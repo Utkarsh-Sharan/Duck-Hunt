@@ -39,9 +39,16 @@ namespace Player
 
 		void initialize();
 		void reset();
+		void resetAllBullets();
 
 		int getPlayerScore();
 		void setPlayerScore(int score);
+
+		/*int getPlayerNormalBullets();
+		void setPlayerNormalBullets(int bullets);
+
+		int getPlayerRadiusBullets();
+		void setPlayerRadiusBullets(int bullets);*/
 
 		PlayerState getPlayerState();
 		void setPlayerState(PlayerState state);
