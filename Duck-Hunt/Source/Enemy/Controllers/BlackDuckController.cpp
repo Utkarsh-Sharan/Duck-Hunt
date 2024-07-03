@@ -28,6 +28,12 @@ namespace Enemy
 
 		void BlackDuckController::move()
 		{
+			if (enemy_model->getEnemyState() == EnemyState::DEAD)
+			{
+				moveDown();
+				return;
+			}
+
 			switch (movement_direction)
 			{
 			case MovementDirection::LEFT_DIAGONAL:
@@ -125,6 +131,19 @@ namespace Enemy
 				enemy_model->setEnemyPosition(current_position);
 
 				movement_direction = MovementDirection::LEFT_DIAGONAL;
+			}
+		}
+
+		void BlackDuckController::moveDown()
+		{
+			sf::Vector2f current_position = enemy_model->getEnemyPosition();
+			current_position.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+			enemy_model->setEnemyPosition(current_position);
+
+			if (enemy_model->getEnemyPosition().y >= 900.0f)
+			{
+				EnemyController::destroy();
 			}
 		}
 	}

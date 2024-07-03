@@ -45,7 +45,7 @@ namespace Enemy
 	void EnemyController::update()
 	{
 		move();
-
+		
 		enemy_view->update();
 	}
 
@@ -64,9 +64,19 @@ namespace Enemy
 		return enemy_model->getEnemyState();
 	}
 
+	void EnemyController::setEnemyState(EnemyState state)
+	{
+		enemy_model->setEnemyState(state);
+	}
+
 	EnemyType EnemyController::getEnemyType()
 	{
 		return enemy_model->getEnemyType();
+	}
+
+	sf::FloatRect EnemyController::getEnemyBounds()
+	{
+		return enemy_view->getEnemyBounds();
 	}
 
 	void EnemyController::destroy()

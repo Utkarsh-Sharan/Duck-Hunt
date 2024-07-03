@@ -15,6 +15,7 @@ namespace Enemy
 			void move() override;
 			void moveLeftDiagonal();
 			void moveRightDiagonal();
+			void moveDown();
 
 		public:
 			RedDuckController(EnemyType type);

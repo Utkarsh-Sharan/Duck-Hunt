@@ -38,5 +38,7 @@ namespace Enemy
 
 		EnemyController* spawnEnemy();
 		void destroyEnemy(EnemyController* enemy_controller);
+
+		sf::FloatRect getEnemyBounds(sf::Vector2f world_position);
 	};
 }
