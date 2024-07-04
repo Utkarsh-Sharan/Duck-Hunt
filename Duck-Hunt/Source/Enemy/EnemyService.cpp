@@ -7,6 +7,7 @@
 #include "Enemy/Controllers/RedDuckController.h"
 
 #include "Global/ServiceLocator.h"
+#include <iostream>
 
 namespace Enemy
 {
@@ -92,6 +93,18 @@ namespace Enemy
 		}
 	}
 
+	void EnemyService::checkEnemyBounds(sf::Vector2f world_position)
+	{
+		for (int i = 0; i < enemy_list.size(); i++)
+		{
+			if (enemy_list[i]->getEnemyBounds().contains(world_position))	//checks if mouse is hovering over the enemy bounds
+			{
+				//set enemy state as DEAD for that perticular enemy controller
+				enemy_list[i]->setEnemyState(EnemyState::DEAD);
+			}
+		}
+	}
+
 	void EnemyService::destroyEnemy(EnemyController* enemy_controller)
 	{
 		if (std::find(flagged_enemy_list.begin(), flagged_enemy_list.end(), enemy_controller) == flagged_enemy_list.end())
@@ -108,20 +121,6 @@ namespace Enemy
 			delete (flagged_enemy_list[i]);
 		}
 		flagged_enemy_list.clear();
-	}
-
-	sf::FloatRect EnemyService::getEnemyBounds(sf::Vector2f world_position)
-	{
-		for (int i = 0; i < enemy_list.size(); i++)
-		{
-			if (enemy_list[i]->getEnemyBounds().contains(world_position))	//checks if mouse is hovering over the enemy bounds
-			{
-				//set enemy state as DEAD for that perticular enemy controller
-				enemy_list[i]->setEnemyState(EnemyState::DEAD);
-			}
-
-			return enemy_list[i]->getEnemyBounds();
-		}
 	}
 
 	void EnemyService::destroy()

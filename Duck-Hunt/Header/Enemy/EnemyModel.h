@@ -24,7 +24,7 @@ namespace Enemy
 		bool has_reached_top;
 		bool has_reached_bottom;
 
-		const float enemy_movement_speed = 500.0f;
+		const float enemy_movement_speed = 400.0f;
 
 		EnemyModel(EnemyType type);
 		~EnemyModel();

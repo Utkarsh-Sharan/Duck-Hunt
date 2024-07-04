@@ -77,18 +77,12 @@ namespace Player
 		game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
 		//for mouse hover
-		sf::Vector2i mouse_position = sf::Mouse::getPosition();
+		sf::Vector2i mouse_position = sf::Mouse::getPosition(*game_window);
 		sf::Vector2f world_position = game_window->mapPixelToCoords(mouse_position);
 
-		//printf("xpos: %f, ypos: %f", worldPosition.x, worldPosition.y);
 		//getting enemy bounds
-		/*enemy_bounds =*/ enemy_service->getEnemyBounds(world_position);
-
-		//if (enemy_bounds.contains(world_position))	//checks if mouse is hovering over the enemy bounds
-		//{
-		//	//set enemy state as DEAD for that perticular enemy controller
-		//	enemy_controller->getInstance()->setEnemyState(EnemyState::DEAD);
-		//}
+		enemy_service =  ServiceLocator::getInstance()->getEnemyService();
+		enemy_service->checkEnemyBounds(world_position);
 	}
 
 	void PlayerController::decreasePlayerRadiusBullets()

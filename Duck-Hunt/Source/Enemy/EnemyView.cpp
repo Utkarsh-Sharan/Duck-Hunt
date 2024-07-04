@@ -75,6 +75,6 @@ namespace Enemy
 
 	sf::FloatRect EnemyView::getEnemyBounds()
 	{
-		return enemy_image->getSprite().getLocalBounds();
+		return enemy_image->getSprite().getGlobalBounds();
 	}
 }
