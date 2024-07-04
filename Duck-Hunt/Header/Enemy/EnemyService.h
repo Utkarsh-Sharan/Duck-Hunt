@@ -8,6 +8,7 @@
 namespace Enemy
 {
 	class EnemyController;
+
 	enum class EnemyType;
 
 	class EnemyService
@@ -40,5 +41,6 @@ namespace Enemy
 		void destroyEnemy(EnemyController* enemy_controller);
 
 		void checkEnemyBounds(sf::Vector2f world_position);
+		void checkEnemyBounds(sf::Vector2f world_position, sf::FloatRect radius_bullet_bounds);
 	};
 }

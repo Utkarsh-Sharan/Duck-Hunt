@@ -49,13 +49,13 @@ namespace Player
 	{
 		EventService* event_service = ServiceLocator::getInstance()->getEventService();
 
-		if (event_service->pressedLeftMouseButton())
+		if (event_service->pressedLeftMouseButton() && PlayerModel::player_normal_bullets > 0)
 		{
 			decreasePlayerNormalBullets();
 			shootNormalBullet();
 		}
 
-		if (event_service->pressedRightMouseButton())
+		if (event_service->pressedRightMouseButton() && PlayerModel::player_radius_bullets > 0)
 		{
 			decreasePlayerRadiusBullets();
 			shootRadiusBullet();
@@ -64,11 +64,6 @@ namespace Player
 
 	void PlayerController::decreasePlayerNormalBullets()
 	{
-		if (PlayerModel::player_normal_bullets <= 0)
-		{
-			PlayerModel::player_normal_bullets = 0;
-			return;
-		}
 		PlayerModel::player_normal_bullets -= 1;
 	}
 
@@ -79,7 +74,7 @@ namespace Player
 		//for mouse hover
 		sf::Vector2i mouse_position = sf::Mouse::getPosition(*game_window);
 		sf::Vector2f world_position = game_window->mapPixelToCoords(mouse_position);
-
+		
 		//getting enemy bounds
 		enemy_service =  ServiceLocator::getInstance()->getEnemyService();
 		enemy_service->checkEnemyBounds(world_position);
@@ -87,17 +82,22 @@ namespace Player
 
 	void PlayerController::decreasePlayerRadiusBullets()
 	{
-		if (PlayerModel::player_radius_bullets <= 0)
-		{
-			PlayerModel::player_radius_bullets = 0;
-			return;
-		}
 		PlayerModel::player_radius_bullets -= 1;
 	}
 
 	void PlayerController::shootRadiusBullet()
 	{
+		game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
+		//for mouse hover
+		sf::Vector2i mouse_position = sf::Mouse::getPosition(*game_window);
+		sf::Vector2f world_position = game_window->mapPixelToCoords(mouse_position);
+
+		sf::CircleShape radius_bullet(120.0f);  //setting radius
+		radius_bullet.setPosition(world_position.x - radius_bullet.getRadius(), world_position.y - radius_bullet.getRadius());
+
+		enemy_service = ServiceLocator::getInstance()->getEnemyService();
+		enemy_service->checkEnemyBounds(world_position, radius_bullet.getGlobalBounds());
 	}
 
 	void PlayerController::decreasePlayerLife()

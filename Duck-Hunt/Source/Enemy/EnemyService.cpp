@@ -6,8 +6,8 @@
 #include "Enemy/Controllers/BlueDuckController.h"
 #include "Enemy/Controllers/RedDuckController.h"
 
+#include "Player/PlayerController.h"
 #include "Global/ServiceLocator.h"
-#include <iostream>
 
 namespace Enemy
 {
@@ -100,6 +100,18 @@ namespace Enemy
 			if (enemy_list[i]->getEnemyBounds().contains(world_position))	//checks if mouse is hovering over the enemy bounds
 			{
 				//set enemy state as DEAD for that perticular enemy controller
+				enemy_list[i]->setEnemyState(EnemyState::DEAD);
+			}
+		}
+	}
+
+	void EnemyService::checkEnemyBounds(sf::Vector2f world_position, sf::FloatRect radius_bullet_bounds)
+	{
+		for (int i = 0; i < enemy_list.size(); i++)
+		{
+			if (radius_bullet_bounds.intersects(enemy_list[i]->getEnemyBounds()))
+			{
+				//set all enemies in that radius as DEAD
 				enemy_list[i]->setEnemyState(EnemyState::DEAD);
 			}
 		}

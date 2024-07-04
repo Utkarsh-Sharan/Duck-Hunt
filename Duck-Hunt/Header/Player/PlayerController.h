@@ -8,6 +8,7 @@
 namespace Player
 {
 	enum class PlayerState;
+
 	class EnemyService;
 
 	class PlayerController
@@ -17,8 +18,6 @@ namespace Player
 		sf::RenderWindow* game_window;
 		Wave::WaveService* wave_service;
 		Enemy::EnemyService* enemy_service;
-
-		//sf::FloatRect enemy_bounds;
 
 		int wave_number;
 
@@ -38,7 +37,6 @@ namespace Player
 		void reset();
 
 		void processBulletsImage();
-
 		void decreasePlayerLife();
 
 		inline void increaseEnemiesKilled(int val) { PlayerModel::enemies_killed += val; }
