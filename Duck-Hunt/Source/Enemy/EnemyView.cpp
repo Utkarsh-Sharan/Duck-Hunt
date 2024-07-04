@@ -72,4 +72,9 @@ namespace Enemy
 	{
 		return enemy_image->getSprite();
 	}
+
+	sf::FloatRect EnemyView::getEnemyBounds()
+	{
+		return enemy_image->getSprite().getGlobalBounds();
+	}
 }

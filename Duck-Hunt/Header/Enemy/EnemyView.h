@@ -35,5 +35,7 @@ namespace Enemy
 		void render();
 
 		const sf::Sprite& getEnemySprite();
+
+		sf::FloatRect getEnemyBounds();
 	};
 }

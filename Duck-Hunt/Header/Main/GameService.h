@@ -27,7 +27,7 @@ namespace Main
 		void initializeVariables();
 		void destroy();
 
-		void showSplashScreen();
+		//void showSplashScreen();
 
 	public:
 		GameService();

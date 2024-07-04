@@ -33,6 +33,10 @@ namespace Enemy
 		sf::Vector2f getEnemyPosition();
 
 		EnemyState getEnemyState();
+		void setEnemyState(EnemyState state);
+
 		EnemyType getEnemyType();
+
+		sf::FloatRect getEnemyBounds();
 	};
 }

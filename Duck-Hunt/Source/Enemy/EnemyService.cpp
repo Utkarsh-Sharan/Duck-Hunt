@@ -13,6 +13,7 @@ namespace Enemy
 	using namespace Controller;
 	using namespace Global;
 	using namespace Gameplay;
+	using namespace Player;
 
 	EnemyService::EnemyService()
 	{
@@ -37,6 +38,8 @@ namespace Enemy
 		{
 			enemy_list[i]->update();
 		}
+
+		destroyFlaggedEnemies();
 	}
 
 	void EnemyService::processEnemySpawn()
@@ -54,7 +57,6 @@ namespace Enemy
 		EnemyController* enemy_controller = createEnemy(getRandomEnemyType());
 		enemy_controller->initialize();
 
-		//ServiceLocator::getInstance()->getCollisionService()->addCollider(dynamic_cast<ICollider*>(enemy_controller));
 		enemy_list.push_back(enemy_controller);
 
 		return enemy_controller;
@@ -90,21 +92,72 @@ namespace Enemy
 		}
 	}
 
+	void EnemyService::checkEnemyBounds(sf::Vector2f world_position)
+	{
+		for (int i = 0; i < enemy_list.size(); i++)
+		{
+			if (enemy_list[i]->getEnemyBounds().contains(world_position))	//checks if mouse is hovering over the enemy bounds
+			{
+				enemy_type = enemy_list[i]->getEnemyType();
+				player_service = ServiceLocator::getInstance()->getPlayerService();
+
+				switch (enemy_type)
+				{
+				case EnemyType::RED:
+					sf::CircleShape radius_red_enemy(200.0f);  //setting radius
+					radius_red_enemy.setPosition(world_position.x - radius_red_enemy.getRadius(), world_position.y - radius_red_enemy.getRadius());
+
+					checkEnemyBounds(world_position, radius_red_enemy.getGlobalBounds());
+					return;
+				}
+
+				//set enemy state as DEAD for that perticular enemy controller
+				enemy_list[i]->setEnemyState(EnemyState::DEAD);
+
+				//increase player score
+				player_service->increaseEnemiesKilled(1);
+			}
+		}
+	}
+
+	void EnemyService::checkEnemyBounds(sf::Vector2f world_position, sf::FloatRect radius_bounds)
+	{
+		for (int i = 0; i < enemy_list.size(); i++)
+		{
+			if (radius_bounds.intersects(enemy_list[i]->getEnemyBounds()))
+			{
+				//set all enemies in that radius as DEAD
+				enemy_list[i]->setEnemyState(EnemyState::DEAD);
+
+				//increase player score
+				player_service = ServiceLocator::getInstance()->getPlayerService();
+				player_service->increaseEnemiesKilled(1);
+			}
+		}
+	}
+
 	void EnemyService::destroyEnemy(EnemyController* enemy_controller)
 	{
-
+		if (std::find(flagged_enemy_list.begin(), flagged_enemy_list.end(), enemy_controller) == flagged_enemy_list.end())
+		{
+			flagged_enemy_list.push_back(enemy_controller);
+			enemy_list.erase(std::remove(enemy_list.begin(), enemy_list.end(), enemy_controller), enemy_list.end());
+		}
 	}
 
 	void EnemyService::destroyFlaggedEnemies()
 	{
-
+		for (int i = 0; i < flagged_enemy_list.size(); i++)
+		{
+			delete (flagged_enemy_list[i]);
+		}
+		flagged_enemy_list.clear();
 	}
 
 	void EnemyService::destroy()
 	{
 		for (int i = 0; i < enemy_list.size(); i++)
 		{
-			//ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<ICollider*>(enemy_list[i]));
 			delete(enemy_list[i]);
 
 			enemy_list[i] = nullptr;

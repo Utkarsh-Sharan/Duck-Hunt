@@ -9,13 +9,23 @@ namespace Player
 {
 	enum class PlayerState;
 
+	class EnemyService;
+
 	class PlayerController
 	{
 	private:
 		PlayerModel* player_model;
+		sf::RenderWindow* game_window;
 		Wave::WaveService* wave_service;
+		Enemy::EnemyService* enemy_service;
 
 		int wave_number;
+
+		void processPlayerInput();
+		void decreasePlayerNormalBullets();
+		void decreasePlayerRadiusBullets();
+		void shootNormalBullet();
+		void shootRadiusBullet();
 
 	public:
 		PlayerController();
@@ -27,10 +37,7 @@ namespace Player
 		void reset();
 
 		void processBulletsImage();
-
-		void decreasePlayerLive();
-		void decreasePlayerNormalBullets();
-		void decreasePlayerRadiusBullets();
+		void decreasePlayerLife();
 
 		inline void increaseEnemiesKilled(int val) { PlayerModel::enemies_killed += val; }
 	};
