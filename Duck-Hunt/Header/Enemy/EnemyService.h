@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Gameplay/GameplayService.h"
+#include "Player/PlayerService.h"
 
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -18,6 +19,10 @@ namespace Enemy
 
 		std::vector<EnemyController*> enemy_list;
 		std::vector<EnemyController*> flagged_enemy_list;
+
+		Player::PlayerService* player_service;
+
+		EnemyType enemy_type;
 
 		EnemyType getRandomEnemyType();
 		EnemyController* createEnemy(EnemyType enemy_type);
@@ -41,6 +46,6 @@ namespace Enemy
 		void destroyEnemy(EnemyController* enemy_controller);
 
 		void checkEnemyBounds(sf::Vector2f world_position);
-		void checkEnemyBounds(sf::Vector2f world_position, sf::FloatRect radius_bullet_bounds);
+		void checkEnemyBounds(sf::Vector2f world_position, sf::FloatRect radius_bounds);
 	};
 }
