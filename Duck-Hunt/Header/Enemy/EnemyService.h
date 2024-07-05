@@ -16,6 +16,7 @@ namespace Enemy
 	{
 	private:
 		int number_of_enemies = 0;
+		int enemies_killed = 0;
 
 		std::vector<EnemyController*> enemy_list;
 		std::vector<EnemyController*> flagged_enemy_list;
@@ -47,5 +48,7 @@ namespace Enemy
 
 		void checkEnemyBounds(sf::Vector2f world_position);
 		void checkEnemyBounds(sf::Vector2f world_position, sf::FloatRect radius_bounds);
+
+		bool allEnemiesKilled();
 	};
 }

@@ -50,5 +50,6 @@ namespace Gameplay
 	{
 		ServiceLocator::getInstance()->getPlayerService()->reset();
 		ServiceLocator::getInstance()->getEnemyService()->reset();
+		ServiceLocator::getInstance()->getWaveService()->reset();
 	}
 }

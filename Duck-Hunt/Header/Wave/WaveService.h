@@ -31,5 +31,7 @@ namespace Wave
 		void update();
 
 		int getWaveNumber();
+
+		void reset();
 	};
 }

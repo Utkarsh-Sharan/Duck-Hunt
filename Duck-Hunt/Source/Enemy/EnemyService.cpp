@@ -108,11 +108,13 @@ namespace Enemy
 					radius_red_enemy.setPosition(world_position.x - radius_red_enemy.getRadius(), world_position.y - radius_red_enemy.getRadius());
 
 					checkEnemyBounds(world_position, radius_red_enemy.getGlobalBounds());
+
 					return;
 				}
 
 				//set enemy state as DEAD for that perticular enemy controller
 				enemy_list[i]->setEnemyState(EnemyState::DEAD);
+				enemies_killed++;
 
 				//increase player score
 				player_service->increaseEnemiesKilled(1);
@@ -128,12 +130,23 @@ namespace Enemy
 			{
 				//set all enemies in that radius as DEAD
 				enemy_list[i]->setEnemyState(EnemyState::DEAD);
+				enemies_killed++;
 
 				//increase player score
 				player_service = ServiceLocator::getInstance()->getPlayerService();
 				player_service->increaseEnemiesKilled(1);
 			}
 		}
+	}
+
+	bool EnemyService::allEnemiesKilled()
+	{
+		printf("killed: %d\n Number: %d\n\n", enemies_killed, number_of_enemies);
+
+		if (enemies_killed != number_of_enemies)
+			return false;
+
+		return true;
 	}
 
 	void EnemyService::destroyEnemy(EnemyController* enemy_controller)
@@ -167,6 +180,8 @@ namespace Enemy
 
 	void EnemyService::reset()
 	{
+		enemies_killed = 0;
+
 		destroy();
 	}
 }
