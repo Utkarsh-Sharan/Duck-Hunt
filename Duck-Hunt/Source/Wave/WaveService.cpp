@@ -61,8 +61,13 @@ namespace Wave
 		if (wave_timer >= wave_time)
 		{
 			wave_timer = 0.0f;
+
+			if (enemy_service->allEnemiesKilled())	//if all enemies of that wave are DEAD, then only get to next wave
+				wave_number++;
+			else
+				player_service->decreasePlayerLife();
+
 			enemy_service->reset();
-			wave_number++;
 			gameplay_service->setGameState(GameState::SPLASH_SCREEN);
 		}
 	}
@@ -70,5 +75,10 @@ namespace Wave
 	int WaveService::getWaveNumber()
 	{
 		return wave_number;
+	}
+
+	void WaveService::reset()
+	{
+		wave_number = 1;
 	}
 }

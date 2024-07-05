@@ -20,6 +20,7 @@ namespace Player
 
 		void increaseEnemiesKilled(int val);
 		void processBulletsImage();
+		void decreasePlayerLife();
 
 		void reset();
 	};

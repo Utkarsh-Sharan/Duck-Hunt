@@ -39,6 +39,11 @@ namespace Player
 		player_controller->processBulletsImage();
 	}
 
+	void PlayerService::decreasePlayerLife()
+	{
+		player_controller->decreasePlayerLife();
+	}
+
 	void PlayerService::reset()
 	{
 		player_controller->reset();
